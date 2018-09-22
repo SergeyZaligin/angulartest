@@ -1,5 +1,26 @@
 # HomeMoney
 
+# Mosules App
+
+<ul>
+  <li>
+    Auth - module auth
+    <ul>
+      <li>
+        Component auth
+      </li>
+      <li>
+        Component login
+      </li>
+      <li>
+        Component registration
+      </li>
+    </ul>
+  </li>
+  <li>System - application</li>
+  <li>Shared - commons</li>
+</ul>
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
 
 ## Development server
