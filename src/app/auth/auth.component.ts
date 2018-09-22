@@ -1,6 +1,13 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+
 @Component({
   selector: "wfm-auth",
   templateUrl: "./auth.component.html"
 })
-export class AuthComponent {}
+export class AuthComponent implements onInit {
+  constructor(private router: Router) {}
+  ngOnInit() {
+    this.router.navigate(["/login"]);
+  }
+}
