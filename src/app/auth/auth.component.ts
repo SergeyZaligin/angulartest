@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
   selector: "wfm-auth",
   templateUrl: "./auth.component.html"
 })
-export class AuthComponent implements onInit {
+export class AuthComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit() {
     this.router.navigate(["/login"]);
