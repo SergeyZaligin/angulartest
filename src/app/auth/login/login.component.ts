@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.message = new Message('danger', '');
+    this.message = new Message('', 'danger');
 
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   }
   private showMessage(text: string, type: string = 'danger'){
-    this.message = new Message(type, text);
+    this.message = new Message(text, type);
     window.setTimeout(() => {
       this.message.text = '';
     }, 5000);
