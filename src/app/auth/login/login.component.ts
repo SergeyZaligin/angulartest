@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { UsersService } from "../../shared/services/users.service";
 import { User } from "../../shared/models/user.model";
+import { Message } from "../../shared/models/message.model";
 
 @Component({
   selector: "wfm-login",
@@ -12,11 +13,16 @@ import { User } from "../../shared/models/user.model";
  ** OnInit - Жизненный цикл компонента
  **/
 export class LoginComponent implements OnInit {
+
   form: FormGroup;
+  message: Message;
 
   constructor(private usersService: UsersService) {}
 
   ngOnInit() {
+
+    this.message = new Message('danger', '');
+
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [
@@ -24,8 +30,14 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6)
       ])
     });
-  }
 
+  }
+  private showMessage(text: string, type: string = 'danger'){
+    this.message = new Message(type, text);
+    window.setTimeout(() => {
+      this.message.text = '';
+    }, 5000);
+  }
   onSubmit() {
     const formData = this.form.value;
     this.usersService.getUserByEmail(formData.email)
@@ -34,10 +46,10 @@ export class LoginComponent implements OnInit {
         if (user.password === formData.password) {
 
         } else {
-          console.error('Пароль не верный.');
+          this.showMessage('Пароль не верный.');
         }
       } else {
-        console.error('Такого пользователя не существует.');
+        this.showMessage('Такого пользователя не существует.');
       }
     });
 
